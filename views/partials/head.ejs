@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="favicon/apple-touch-icon.png?"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="favicon/favicon-32x32.png?"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="favicon/favicon-16x16.png?"
+  />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= pageTitle %></title>
+  <meta name="description" content="<%= pageDescription %>">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta property="og:description" content="<%= pageDescription %>">
+  <% if (pageUrl) { %><meta property="og:url" content="<%= pageUrl %>"><% } %>
+  <% if (typeof post !== 'undefined' && post && post.image) { %><meta property="og:image" content="<%= post.image %>"><% } %>
+
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = savedTheme || preferredTheme;
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/">Kashyap's Notes</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">Change Theme</button>
+    </div>
+  </header>
+  <main>

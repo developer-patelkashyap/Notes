@@ -1,0 +1,44 @@
+<%- include('partials/head') %>
+
+<section class="shell hero">
+  <% if (categories.length) { %>
+    <nav class="category-links" aria-label="Categories">
+      <% categories.forEach((category) => { %>
+        <a href="#<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>"><%= category %></a>
+      <% }) %>
+    </nav>
+  <% } %>
+</section>
+
+<section class="shell content-stack">
+  <% if (!posts.length) { %>
+    <div class="empty-state">No posts yet. Add a Markdown file to <code>posts/</code>.</div>
+  <% } %>
+
+  <% categories.forEach((category) => { %>
+    <% const categoryPosts = posts.filter((post) => post.category === category); %>
+    <section class="category-section" id="<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>">
+      <div class="section-heading">
+        <h2><%= category %></h2>
+        <span><%= categoryPosts.length %> <%= categoryPosts.length === 1 ? 'post' : 'posts' %></span>
+      </div>
+
+      <div class="post-list">
+        <% categoryPosts.forEach((post) => { %>
+          <a class="post-card" href="/posts/<%= post.slug %>">
+            <div>
+              <h3><%= post.title %></h3>
+              <% if (post.description) { %><p><%= post.description %></p><% } %>
+            </div>
+            <div class="post-meta">
+              <% if (post.dateText) { %><time><%= post.dateText %></time><% } %>
+              <% post.tags.forEach((tag) => { %><span><%= tag %></span><% }) %>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    </section>
+  <% }) %>
+</section>
+
+<%- include('partials/footer') %>

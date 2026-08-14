@@ -1,0 +1,21 @@
+<%- include('partials/head') %>
+
+<article class="shell article-shell">
+  <a class="back-link" href="/">← All notes</a>
+
+  <header class="article-header">
+    <p class="eyebrow"><%= post.category %></p>
+    <h1><%= post.title %></h1>
+    <% if (post.description) { %><p class="article-description"><%= post.description %></p><% } %>
+    <div class="post-meta article-meta">
+      <% if (post.dateText) { %><time><%= post.dateText %></time><% } %>
+      <% post.tags.forEach((tag) => { %><span><%= tag %></span><% }) %>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <%- post.html %>
+  </div>
+</article>
+
+<%- include('partials/footer') %>
