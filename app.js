@@ -1,8 +1,12 @@
-const express = require("express");
-const fs = require("fs");
-const path = require("path");
-const matter = require("gray-matter");
-const { marked } = require("marked");
+import express from "express";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import matter from "gray-matter";
+import { marked } from "marked";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
