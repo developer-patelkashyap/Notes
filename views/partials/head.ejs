@@ -4,19 +4,19 @@
   <link
     rel="apple-touch-icon"
     sizes="180x180"
-    href="favicon/apple-touch-icon.png?"
+    href="/favicon/apple-touch-icon.png"
   />
   <link
     rel="icon"
     type="image/png"
     sizes="32x32"
-    href="favicon/favicon-32x32.png?"
+    href="/favicon/favicon-32x32.png"
   />
   <link
     rel="icon"
     type="image/png"
     sizes="16x16"
-    href="favicon/favicon-16x16.png?"
+    href="/favicon/favicon-16x16.png"
   />
   <link rel="manifest" href="favicon/site.webmanifest" />
   
@@ -36,6 +36,30 @@
     const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     document.documentElement.dataset.theme = savedTheme || preferredTheme;
   </script>
+
+  <!-- MathJax configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ],
+        processEscapes: true
+      }
+    };
+  </script>
+
+  <!-- MathJax -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js">
+  </script>
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>

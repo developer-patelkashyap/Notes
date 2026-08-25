@@ -367,3 +367,77 @@ select {
     padding-block: 1rem;
   }
 }
+
+/* table of contents */
+
+.table-of-contents {
+  margin: 2rem 0 3rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.table-of-contents h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-of-contents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.table-of-contents li {
+  margin: 0.5rem 0;
+}
+
+.table-of-contents a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.table-of-contents a:hover {
+  text-decoration: underline;
+}
+
+.table-of-contents .toc-subheading {
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+}
+
+
+/* back to top button */
+
+.back-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

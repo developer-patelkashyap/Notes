@@ -6,16 +6,45 @@
   <header class="article-header">
     <p class="eyebrow"><%= post.category %></p>
     <h1><%= post.title %></h1>
-    <% if (post.description) { %><p class="article-description"><%= post.description %></p><% } %>
+
+    <% if (post.description) { %>
+      <p class="article-description"><%= post.description %></p>
+    <% } %>
+
     <div class="post-meta article-meta">
-      <% if (post.dateText) { %><time><%= post.dateText %></time><% } %>
-      <% post.tags.forEach((tag) => { %><span><%= tag %></span><% }) %>
+      <% if (post.dateText) { %>
+        <time><%= post.dateText %></time>
+      <% } %>
+
+      <% post.tags.forEach((tag) => { %>
+        <span><%= tag %></span>
+      <% }) %>
     </div>
   </header>
 
-  <div class="post-content">
+  <!-- Table of Contents -->
+  <aside class="table-of-contents" id="table-of-contents">
+    <h2>Table of Contents</h2>
+    <nav>
+      <ul id="toc-list"></ul>
+    </nav>
+  </aside>
+
+  <div class="post-content" id="post-content">
     <%- post.html %>
   </div>
 </article>
+
+<!-- Back to Top Button -->
+<button
+  id="back-to-top"
+  class="back-to-top"
+  type="button"
+  aria-label="Back to top"
+>
+  ↑
+</button>
+
+<script src="/js/post.js"></script>
 
 <%- include('partials/footer') %>
