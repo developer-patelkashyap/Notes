@@ -314,25 +314,25 @@ Combination of Delete and Insert.
 
 #### Strong Entity
 
-![](/images/dbms/rm-strong-entity-1.jpg)
+![](/images/dbms/rm-strong-entity-1.JPG)
 
-![](/images/dbms/rm-strong-entity-2.jpg)
+![](/images/dbms/rm-strong-entity-2.JPG)
 
 #### Relationship
 
-![](/images/dbms/rm-1-1.jpg)
+![](/images/dbms/rm-1-1.JPG)
 
-![](/images/dbms/rm-1-1-tp.jpg)
+![](/images/dbms/rm-1-1-tp.JPG)
 
-![](/images/dbms/rm-1-n.jpg)
+![](/images/dbms/rm-1-n.JPG)
 
-![](/images/dbms/rm-1-n-tp.jpg)
+![](/images/dbms/rm-1-n-tp.JPG)
 
-![](/images/dbms/rm-m-n.jpg)
+![](/images/dbms/rm-m-n.JPG)
 
 #### Weak Entity
 
-![](/images/dbms/rm-weak-entity.jpg)
+![](/images/dbms/rm-weak-entity.JPG)
 
 #### Ternary Relationship
 
@@ -341,7 +341,7 @@ Combination of Delete and Insert.
 
 #### Aggregation
 
-![](/images/dbms/aggregation.jpg)
+![](/images/dbms/aggregation.JPG)
 
 ## Normalization
 
