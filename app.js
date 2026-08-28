@@ -23,7 +23,9 @@ function readPosts() {
     .map((file) => {
       const source = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
       const { data, content } = matter(source);
+
       const rawDate = data.date ? new Date(data.date) : null;
+
       const validDate =
         rawDate && !Number.isNaN(rawDate.getTime()) ? rawDate : null;
 
@@ -35,6 +37,7 @@ function readPosts() {
         description: data.description || "",
         image: data.image || "",
         date: validDate,
+
         dateText: validDate
           ? validDate.toLocaleDateString("en-IN", {
               day: "numeric",
@@ -42,15 +45,44 @@ function readPosts() {
               year: "numeric",
             })
           : "",
+
         html: marked.parse(content),
       };
     })
-    .sort((a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0));
+    .sort((a, b) => {
+      if (a.date && b.date) {
+        const dateDiff = b.date.getTime() - a.date.getTime();
+
+        if (dateDiff === 0) {
+          return a.title.localeCompare(b.title, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          });
+        }
+
+        return dateDiff;
+      }
+
+      if (a.date) return -1;
+
+      if (b.date) return 1;
+
+      return a.title.localeCompare(b.title, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      });
+    });
 }
 
 app.get("/", (req, res) => {
   const posts = readPosts();
-  const categories = [...new Set(posts.map((post) => post.category))];
+  const categories = [...new Set(posts.map((post) => post.category))]
+    .sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      })
+    );
 
   res.render("index", {
     posts,
