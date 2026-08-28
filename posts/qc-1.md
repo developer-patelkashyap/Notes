@@ -47,7 +47,7 @@ category: Quantum Computing
 * Instead, future computing systems may use:
 
 $$
-\text{CPU} + \text{GPU} + \text{QPU}
+  \text{CPU} + \text{GPU} + \text{QPU}
 $$
 
 where QPU = Quantum Processing Unit.
@@ -144,369 +144,354 @@ Ref: https://en.wikipedia.org/wiki/Bloch_sphere
 ### Basic Single Qubit Operators
 
 * Identity Operator
-  $$
+
+$$
   I \equiv
   \begin{pmatrix}
   1 & 0\\\\
   0 & 1
   \end{pmatrix}
-  $$
+$$
 
-  $$
+$$
   I|\psi\rangle = |\psi\rangle
-  $$
+$$
 
 * Pauli Operators
-  $$
+
+$$
   Z \equiv
   \begin{pmatrix}
   1 & 0\\\\
   0 & -1
   \end{pmatrix}
-  $$
+$$
 
-  $$
+$$
   X \equiv
   \begin{pmatrix}
   0 & 1\\\\
   1 & 0
   \end{pmatrix}
-  $$
+$$
 
-  $$
+$$
   Y \equiv
   \begin{pmatrix}
   0 & -i\\\\
   i & 0
   \end{pmatrix}
-  $$
+$$
 
 ### Eigenkets and Eigenvalues of Pauli Operators
 
-* For $Z$:
-  $$
+**For $Z$:**
+
+$$
   Z|0\rangle = |0\rangle,
   \qquad
   Z|1\rangle = -|1\rangle
-  $$
+$$
 
-  * So $|0\rangle$ and $|1\rangle$ are eigenkets of $Z$
-  * Their eigenvalues are $+1$ and $-1$
+* So $|0\rangle$ and $|1\rangle$ are eigenkets of $Z$
+* Their eigenvalues are $+1$ and $-1$
 
-* For $X$:
-  $$
+**For $X$:**
+
+$$
   X|+\rangle = |+\rangle,
   \qquad
   X|-\rangle = -|-\rangle
-  $$
+$$
 
-  * So $|+\rangle$ and $|-\rangle$ are eigenkets of $X$
+* So $|+\rangle$ and $|-\rangle$ are eigenkets of $X$
 
-* For $Y$:
-  $$
+**For $Y$:**
+
+$$
   Y|+i\rangle = |+i\rangle,
   \qquad
   Y|-i\rangle = -|-i\rangle
-  $$
+$$
 
-  * So $|+i\rangle$ and $|-i\rangle$ are eigenkets of $Y$
+* So $|+i\rangle$ and $|-i\rangle$ are eigenkets of $Y$
 
-* General eigenvalue equation form:
-  $$
+**General eigenvalue equation form:**
+
+$$
   A|\lambda\rangle = \lambda |\lambda\rangle
-  $$
+$$
 
-  * Here:
-    * $|\lambda\rangle$ = eigenket
-    * $\lambda$ = eigenvalue
+* Here:
+  * $|\lambda\rangle$ = eigenket
+  * $\lambda$ = eigenvalue
 
 **Important Note:** An overall global phase is physically irrelevant, so states differing only by a global phase represent the same physical state. 
 
 ### Arbitrary Direction on the Bloch Sphere
 
 * A unit vector $\hat e$ in spherical coordinates is:
-  $$
+
+$$
   \hat e =
   \begin{pmatrix}
   \sin\theta \cos\phi \\\\
   \sin\theta \sin\phi \\\\
   \cos\theta
   \end{pmatrix}
-  $$
+$$
 
 * The Pauli operator along this direction is: $\hat e \cdot \vec{\sigma}$
   * Expansion:
-    $$
-    \hat e \cdot \vec{\sigma} = (\sin\theta \cos\phi)X + (\sin\theta \sin\phi)Y + (\cos\theta)Z
-    $$
+
+$$
+  \hat e \cdot \vec{\sigma} = (\sin\theta \cos\phi)X + (\sin\theta \sin\phi)Y + (\cos\theta)Z
+$$
 
 ### Eigenvalue Equation in an Arbitrary Direction
 
-* To find the basis states associated with direction $\hat e$, solve:
-  $$
-  (\hat e \cdot \vec{\sigma})|\,\rangle = \pm |\,\rangle
-  $$
+To find the basis states associated with direction $\hat e$, solve:
 
-  * That means the states in direction $\hat e$ are the eigenkets of $\hat e \cdot \vec{\sigma}$ with eigenvalues $+1$ and $-1$.
+$$
+  (\hat e \cdot \vec{\sigma})|\,\rangle = \pm |\,\rangle
+$$
+
+That means the states in direction $\hat e$ are the eigenkets of $\hat e \cdot \vec{\sigma}$ with eigenvalues $+1$ and $-1$.
 
 ### Eigenvectors of the Pauli Operator in an Arbitrary Direction
 
-  $$
+$$
   \vec e\cdot\vec\sigma = \sin\theta\cos\phi\,X + \sin\theta\sin\phi\,Y + \cos\theta\,Z
-  $$
+$$
 
-  $$
-    \vec e\cdot\vec\sigma
-    =
-    \sin\theta\cos\phi
-    \begin{pmatrix}
-    0&1\\\\
-    1&0
-    \end{pmatrix}
-    +
-    \sin\theta\sin\phi
-    \begin{pmatrix}
-    0&-i\\\\
-    i&0
-    \end{pmatrix}
-    +
-    \cos\theta
-    \begin{pmatrix}
-    1&0\\\\
-    0&-1
-    \end{pmatrix}
-  $$
+$$
+  \vec e\cdot\vec\sigma=
+  \sin\theta\cos\phi
+  \begin{pmatrix}
+  0&1\\\\
+  1&0
+  \end{pmatrix}+
+  \sin\theta\sin\phi
+  \begin{pmatrix}
+  0&-i\\\\
+  i&0
+  \end{pmatrix}+
+  \cos\theta
+  \begin{pmatrix}
+  1&0\\\\
+  0&-1
+  \end{pmatrix}
+$$
 
-  $$
-    \vec e\cdot\vec\sigma
-    =
-    \begin{pmatrix}
-    \cos\theta &
-    \sin\theta(\cos\phi-i\sin\phi)
-    \\\\
-    \sin\theta(\cos\phi+i\sin\phi) &
-    -\cos\theta
-    \end{pmatrix}
-  $$
+$$
+  \vec e\cdot\vec\sigma=
+  \begin{pmatrix}
+  \cos\theta &
+  \sin\theta(\cos\phi-i\sin\phi)
+  \\\\
+  \sin\theta(\cos\phi+i\sin\phi) &
+  -\cos\theta
+  \end{pmatrix}
+$$
 
-  Using Euler's relation,
+Using Euler's relation,
 
-  $$
-    e^{i\phi}=\cos\phi+i\sin\phi
-  $$
+$$
+  e^{i\phi}=\cos\phi+i\sin\phi
+$$
 
-  $$
-    e^{-i\phi}=\cos\phi-i\sin\phi
-  $$
+$$
+  e^{-i\phi}=\cos\phi-i\sin\phi
+$$
 
-  we get
+we get
 
-  $$
-    \boxed{
-    \vec e\cdot\vec\sigma
-    =
-    \begin{pmatrix}
-    \cos\theta & e^{-i\phi}\sin\theta\\\\
-    e^{i\phi}\sin\theta & -\cos\theta
-    \end{pmatrix}
-    }
-  $$
+$$
+  \boxed{
+  \vec e\cdot\vec\sigma=
+  \begin{pmatrix}
+  \cos\theta & e^{-i\phi}\sin\theta\\\\
+  e^{i\phi}\sin\theta & -\cos\theta
+  \end{pmatrix}
+  }
+$$
 
-  **Solving for the $+1$ eigenstate**
+**Solving for the $+1$ eigenstate**
 
-  Represent the unknown eigenstate as
+Represent the unknown eigenstate as
 
-  $$
-    |\psi\rangle
-    =
-    \begin{pmatrix}
-    \alpha\\\\
-    \beta
-    \end{pmatrix}
-  $$
+$$
+  |\psi\rangle=
+  \begin{pmatrix}
+  \alpha\\\\
+  \beta
+  \end{pmatrix}
+$$
 
-  For eigenvalue $\lambda=+1$ the eigenvalue equation becomes
+For eigenvalue $\lambda=+1$ the eigenvalue equation becomes
 
-  $$
-    \begin{pmatrix}
-    \cos\theta & e^{-i\phi}\sin\theta\\\\
-    e^{i\phi}\sin\theta & -\cos\theta
-    \end{pmatrix}
-    \begin{pmatrix}
-    \alpha\\\\
-    \beta
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-    \alpha\\\\
-    \beta
-    \end{pmatrix}
-  $$
+$$
+  \begin{pmatrix}
+  \cos\theta & e^{-i\phi}\sin\theta\\\\
+  e^{i\phi}\sin\theta & -\cos\theta
+  \end{pmatrix}
+  \begin{pmatrix}
+  \alpha\\\\
+  \beta
+  \end{pmatrix}=
+  \begin{pmatrix}
+  \alpha\\\\
+  \beta
+  \end{pmatrix}
+$$
 
-  This produces two equations:
+This produces two equations:
 
-  $$
-    \alpha\cos\theta
-    +
-    \beta e^{-i\phi}\sin\theta
-    =
-    \alpha
-    \tag{1}
-  $$
+$$
+  \alpha\cos\theta+
+  \beta e^{-i\phi}\sin\theta=
+  \alpha
+  \tag{1}
+$$
 
-  $$
-    \alpha e^{i\phi}\sin\theta
-    -
-    \beta\cos\theta
-    =
-    \beta
-  $$
+$$
+  \alpha e^{i\phi}\sin\theta-
+  \beta\cos\theta=
+  \beta
+$$
 
-  **Simplifying equation (1)**
+**Simplifying equation (1)**
 
-  Rearrange:
+Rearrange:
 
-  $$
-    \beta e^{-i\phi}\sin\theta
-    =
-    \alpha(1-\cos\theta)
-  $$
+$$
+  \beta e^{-i\phi}\sin\theta=
+  \alpha(1-\cos\theta)
+$$
 
-  Use the identities $\sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2}$ and $1-\cos\theta = 2\sin^2\frac{\theta}{2}$
+Use the identities $\sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2}$ and $1-\cos\theta = 2\sin^2\frac{\theta}{2}$
 
-  Therefore,
+Therefore,
 
-  $$
-    \beta e^{-i\phi}
-    \left(
-    2\sin\frac{\theta}{2}\cos\frac{\theta}{2}
-    \right)
-    =
-    \alpha
-    \left(
-    2\sin^2\frac{\theta}{2}
-    \right)
-  $$
+$$
+  \beta e^{-i\phi}
+  \left(
+  2\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+  \right)=
+  \alpha
+  \left(
+  2\sin^2\frac{\theta}{2}
+  \right)
+$$
 
-  Cancel the common terms:
+Cancel the common terms:
 
-  $$
-    \beta e^{-i\phi}\cos\frac{\theta}{2}
-    =
-    \alpha\sin\frac{\theta}{2}
-  $$
+$$
+  \beta e^{-i\phi}\cos\frac{\theta}{2}=
+  \alpha\sin\frac{\theta}{2}
+$$
 
-  A normalized solution is
+A normalized solution is
 
-  $$
-    \boxed{
-    \alpha=\cos\frac{\theta}{2}
-    }
-  $$
+$$
+  \boxed{
+  \alpha=\cos\frac{\theta}{2}
+  }
+$$
 
-  $$
-    \boxed{
-    \beta=e^{i\phi}\sin\frac{\theta}{2}
-    }
-  $$
+$$
+  \boxed{
+  \beta=e^{i\phi}\sin\frac{\theta}{2}
+  }
+$$
 
-  Hence the eigenstate with eigenvalue $+1$ is
+Hence the eigenstate with eigenvalue $+1$ is
 
-  $$
-    \boxed{
-    |\uparrow_{\vec e}\rangle
-    =
-    \begin{pmatrix}
-    \cos\frac{\theta}{2}\\\\
-    e^{i\phi}\sin\frac{\theta}{2}
-    \end{pmatrix}
-    }
-  $$
+$$
+  \boxed{
+  |\uparrow_{\vec e}\rangle=
+  \begin{pmatrix}
+  \cos\frac{\theta}{2}\\\\
+  e^{i\phi}\sin\frac{\theta}{2}
+  \end{pmatrix}
+  }
+$$
 
-  In ket notation,
+In ket notation,
 
-  $$
-    \boxed{
-    |\uparrow_{\vec e}\rangle
-    =
-    \cos\frac{\theta}{2}|0\rangle
-    +
-    e^{i\phi}\sin\frac{\theta}{2}|1\rangle
-    }
-  $$
+$$
+  \boxed{
+  |\uparrow_{\vec e}\rangle=
+  \cos\frac{\theta}{2}|0\rangle+
+  e^{i\phi}\sin\frac{\theta}{2}|1\rangle
+  }
+$$
 
-  This represents the qubit pointing in the $+\vec e$ direction on the Bloch sphere.
+This represents the qubit pointing in the $+\vec e$ direction on the Bloch sphere.
 
-  Solving the same eigenvalue equation for $\lambda=-1$ gives
+Solving the same eigenvalue equation for $\lambda=-1$ gives
 
-  $$
-    \boxed{
-    |\downarrow_{\vec e}\rangle
-    =
-    \begin{pmatrix}
-    -e^{-i\phi}\sin\frac{\theta}{2}\\\\
-    \cos\frac{\theta}{2}
-    \end{pmatrix}
-    }
-  $$
+$$
+  \boxed{
+  |\downarrow_{\vec e}\rangle=
+  \begin{pmatrix}
+  -e^{-i\phi}\sin\frac{\theta}{2}\\\\
+  \cos\frac{\theta}{2}
+  \end{pmatrix}
+  }
+$$
 
-  or
+or
 
-  $$
-    \boxed{
-    |\downarrow_{\vec e}\rangle
-    =
-    -e^{-i\phi}\sin\frac{\theta}{2}|0\rangle
-    +
-    \cos\frac{\theta}{2}|1\rangle
-    }
-  $$
+$$
+  \boxed{
+  |\downarrow_{\vec e}\rangle=
+  -e^{-i\phi}\sin\frac{\theta}{2}|0\rangle+
+  \cos\frac{\theta}{2}|1\rangle
+  }
+$$
 
-  It corresponds to the direction opposite to $\vec e$, i.e. $-\vec e$.
+It corresponds to the direction opposite to $\vec e$, i.e. $-\vec e$.
 
-  $\vec e$ and $-\vec e$ are mutually orthogonal:
+$\vec e$ and $-\vec e$ are mutually orthogonal:
 
-  $$
-    \boxed{
-    \langle\uparrow_{\vec e}|\downarrow_{\vec e}\rangle=0
-    }
-  $$
+$$
+  \boxed{
+  \langle\uparrow_{\vec e}|\downarrow_{\vec e}\rangle=0
+  }
+$$
 
-  Therefore, $\lbrace |\uparrow_{\vec e}\rangle, |\downarrow_{\vec e}\rangle \rbrace$ forms an orthonormal basis.
+Therefore, $\lbrace |\uparrow_{\vec e}\rangle, |\downarrow_{\vec e}\rangle \rbrace$ forms an orthonormal basis.
 
-  The two eigenstates span the complete single-qubit space:
+The two eigenstates span the complete single-qubit space:
 
-  $$
-    \boxed{
-    |\uparrow_{\vec e}\rangle
-    \langle\uparrow_{\vec e}|
-    +
-    |\downarrow_{\vec e}\rangle
-    \langle\downarrow_{\vec e}|
-    =
-    I
-    }
-  $$
+$$
+  \boxed{
+  |\uparrow_{\vec e}\rangle
+  \langle\uparrow_{\vec e}|+
+  |\downarrow_{\vec e}\rangle
+  \langle\downarrow_{\vec e}|=
+  I
+  }
+$$
 
-  Main result:
+Main result:
 
-  $$
-    \boxed{
-    (\vec e\cdot\vec\sigma)
-    |\uparrow_{\vec e}\rangle
-    =
-    +|\uparrow_{\vec e}\rangle
-    }
-  $$
+$$
+  \boxed{
+  (\vec e\cdot\vec\sigma)
+  |\uparrow_{\vec e}\rangle=
+  +|\uparrow_{\vec e}\rangle
+  }
+$$
 
-  $$
-    \boxed{
-    (\vec e\cdot\vec\sigma)
-    |\downarrow_{\vec e}\rangle
-    =
-    -|\downarrow_{\vec e}\rangle
-    }
-  $$
+$$
+  \boxed{
+  (\vec e\cdot\vec\sigma)
+  |\downarrow_{\vec e}\rangle=
+  -|\downarrow_{\vec e}\rangle
+  }
+$$
 
 ### Basis Transformations and Unitary Operators
 
@@ -519,33 +504,28 @@ Ref: https://en.wikipedia.org/wiki/Bloch_sphere
   * $+i/-i$ basis: $|\pm i\rangle = \frac{1}{\sqrt2}|0\rangle \pm \frac{i}{\sqrt2}|1\rangle$
 
   * Arbitrary $\vec e$-basis:
-    $$
-      |\uparrow_{\vec e}\rangle = \cos\frac{\theta}{2}|0\rangle + e^{i\phi}\sin\frac{\theta}{2}|1\rangle
-    $$
 
-    $$
-      |\downarrow_{\vec e}\rangle = -e^{-i\phi}\sin\frac{\theta}{2}|0\rangle + \cos\frac{\theta}{2}|1\rangle
-    $$
+$$
+  |\uparrow_{\vec e}\rangle = \cos\frac{\theta}{2}|0\rangle + e^{i\phi}\sin\frac{\theta}{2}|1\rangle
+$$
 
-* A generic qubit $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$ points in direction $\vec e$ when
+$$
+  |\downarrow_{\vec e}\rangle = -e^{-i\phi}\sin\frac{\theta}{2}|0\rangle + \cos\frac{\theta}{2}|1\rangle
+$$
 
-  $$
-    \alpha=\cos\frac{\theta}{2},
-    \qquad
-    \beta=e^{i\phi}\sin\frac{\theta}{2}
-  $$
-
-  up to an overall global phase.
+* A generic qubit $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$ points in direction $\vec e$ when $\alpha=\cos\frac{\theta}{2}, \beta=e^{i\phi}\sin\frac{\theta}{2}$ up to an overall global phase.
 
 #### Unitary Operator for Changing Basis
 
 * A unitary operator can transform one orthonormal basis into another.
 * If $\lbrace|b_k\rangle\rbrace \rightarrow \lbrace|a_k\rangle\rbrace$ then the unitary is
-  $$
-    \boxed{
-    U=\sum_k |a_k\rangle\langle b_k|
-    }
-  $$
+
+$$
+  \boxed{
+  U=\sum_k |a_k\rangle\langle b_k|
+  }
+$$
+
 * Its action is $U|b_k\rangle=|a_k\rangle$.
 * Intuition:
   * $\langle b_k|$ selects the old basis state.
@@ -557,7 +537,7 @@ Ref: https://en.wikipedia.org/wiki/Bloch_sphere
 
 * Therefore, $U = |+\rangle\langle0| + |-\rangle\langle1|$
 
-  $$
+$$
   U =
   \frac1{\sqrt2}
   \begin{pmatrix}
@@ -575,78 +555,85 @@ Ref: https://en.wikipedia.org/wiki/Bloch_sphere
   \begin{pmatrix}
   0&1
   \end{pmatrix}
-  $$
+$$
 
 * Hence,
-  $$
-    \boxed{
-    U=
-    \frac1{\sqrt2}
-    \begin{pmatrix}
-    1&1\\\\
-    1&-1
-    \end{pmatrix}
-    =H
-    }
-  $$
+
+$$
+  \boxed{
+  U=
+  \frac1{\sqrt2}
+  \begin{pmatrix}
+  1&1\\\\
+  1&-1
+  \end{pmatrix}
+  =H
+  }
+$$
+
 * This is the **Hadamard operator**.
 * Important action:
-  $$
-    H|0\rangle=|+\rangle
-  $$
 
-  $$
-    H|1\rangle=|-\rangle
-  $$
+$$
+  H|0\rangle=|+\rangle
+$$
+
+$$
+  H|1\rangle=|-\rangle
+$$
+
 * Therefore the Hadamard gate converts the computational basis into the $+/-$ basis and can create a superposition from $|0\rangle$.
 
 #### Computational Basis $\rightarrow$ Arbitrary $\vec e$-Basis
 
 * For an arbitrary direction $(\theta,\phi)$, define
-  $$
-    U(\theta,\phi) = |\uparrow_{\vec e}\rangle\langle0| + |\downarrow_{\vec e}\rangle\langle1|
-  $$
 
-  $$
-    U(\theta,\phi) =
-    \begin{pmatrix}
-    \cos\frac{\theta}{2}\\\\
-    e^{i\phi}\sin\frac{\theta}{2}
-    \end{pmatrix}
-    \begin{pmatrix}
-    1&0
-    \end{pmatrix} +
-    \begin{pmatrix}
-    -e^{-i\phi}\sin\frac{\theta}{2}\\\\
-    \cos\frac{\theta}{2}
-    \end{pmatrix}
-    \begin{pmatrix}
-    0&1
-    \end{pmatrix}
-  $$
+$$
+  U(\theta,\phi) = |\uparrow_{\vec e}\rangle\langle0| + |\downarrow_{\vec e}\rangle\langle1|
+$$
 
-  $$
-    \boxed{
-    U(\theta,\phi)=
-    \begin{pmatrix}
-    \cos\frac{\theta}{2}
-    &
-    -e^{-i\phi}\sin\frac{\theta}{2}
-    \\\\[4pt]
-    e^{i\phi}\sin\frac{\theta}{2}
-    &
-    \cos\frac{\theta}{2}
-    \end{pmatrix}
-    }
-  $$
+$$
+  U(\theta,\phi) =
+  \begin{pmatrix}
+  \cos\frac{\theta}{2}\\\\
+  e^{i\phi}\sin\frac{\theta}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+  1&0
+  \end{pmatrix} +
+  \begin{pmatrix}
+  -e^{-i\phi}\sin\frac{\theta}{2}\\\\
+  \cos\frac{\theta}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+  0&1
+  \end{pmatrix}
+$$
+
+$$
+  \boxed{
+  U(\theta,\phi)=
+  \begin{pmatrix}
+  \cos\frac{\theta}{2}
+  &
+  -e^{-i\phi}\sin\frac{\theta}{2}
+  \\\\[4pt]
+  e^{i\phi}\sin\frac{\theta}{2}
+  &
+  \cos\frac{\theta}{2}
+  \end{pmatrix}
+  }
+$$
+
 * Its action is
-  $$
-    U(\theta,\phi)|0\rangle = |\uparrow_{\vec e}\rangle
-  $$
 
-  $$
-    U(\theta,\phi)|1\rangle = |\downarrow_{\vec e}\rangle
-  $$
+$$
+  U(\theta,\phi)|0\rangle = |\uparrow_{\vec e}\rangle
+$$
+
+$$
+  U(\theta,\phi)|1\rangle = |\downarrow_{\vec e}\rangle
+$$
 
 * So this unitary transforms the $0/1$ computational basis into the basis associated with an arbitrary direction $\vec e$ on the Bloch sphere.
 
@@ -658,76 +645,67 @@ $$
 
 * This is not yet the most general single-qubit unitary, because an eigenvector can be multiplied by an arbitrary phase and still remain an eigenvector.
 * From the eigenvector equation, $(\vec e\cdot\vec\sigma)|\psi\rangle = \lambda|\psi\rangle$ if $|\psi\rangle$ is an eigenvector, then $e^{i\gamma}|\psi\rangle$ is also an eigenvector with the same eigenvalue.
-* Therefore, assign independent phases to the two eigenstates:
-  $$
-    e^{i\gamma_1}|\uparrow_{\vec e}\rangle
-  $$
+* Therefore, assign independent phases to the two eigenstates: $e^{i\gamma_1}|\uparrow_{\vec e}\rangle$ and $e^{i\gamma_2}|\downarrow_{\vec e}\rangle$
 
-  and
-
-  $$
-    e^{i\gamma_2}|\downarrow_{\vec e}\rangle
-  $$
 * Hence the more general unitary is
-  $$
-    \boxed{
-    U(\theta,\phi,\gamma_1,\gamma_2) =
-    e^{i\gamma_1}
-    |\uparrow_{\vec e}\rangle\langle0| +
-    e^{i\gamma_2}
-    |\downarrow_{\vec e}\rangle\langle1|
-    }
-  $$
 
-  $$
-    U(\theta,\phi,\gamma_1,\gamma_2) =
-    \begin{pmatrix}
-    e^{i\gamma_1}\cos\frac{\theta}{2}
-    &
-    -e^{i\gamma_2}e^{-i\phi}\sin\frac{\theta}{2}
-    \\\\[4pt]
-    e^{i\gamma_1}e^{i\phi}\sin\frac{\theta}{2}
-    &
-    e^{i\gamma_2}\cos\frac{\theta}{2}
-    \end{pmatrix}
-  $$
+$$
+  \boxed{
+  U(\theta,\phi,\gamma_1,\gamma_2) =
+  e^{i\gamma_1}
+  |\uparrow_{\vec e}\rangle\langle0| +
+  e^{i\gamma_2}
+  |\downarrow_{\vec e}\rangle\langle1|
+  }
+$$
+
+$$
+  U(\theta,\phi,\gamma_1,\gamma_2) =
+  \begin{pmatrix}
+  e^{i\gamma_1}\cos\frac{\theta}{2}&
+  -e^{i\gamma_2}e^{-i\phi}\sin\frac{\theta}{2}
+  \\\\[4pt]
+  e^{i\gamma_1}e^{i\phi}\sin\frac{\theta}{2}&
+  e^{i\gamma_2}\cos\frac{\theta}{2}
+  \end{pmatrix}
+$$
+
 * Factor out $e^{i\gamma_1}$:
-  $$
+
+$$
   U =
   e^{i\gamma_1}
   \begin{pmatrix}
-  \cos\frac{\theta}{2}
-  &
+  \cos\frac{\theta}{2}&
   -e^{i(\gamma_2-\gamma_1)}e^{-i\phi}
   \sin\frac{\theta}{2}
   \\\\[4pt]
-  e^{i\phi}\sin\frac{\theta}{2}
-  &
+  e^{i\phi}\sin\frac{\theta}{2}&
   e^{i(\gamma_2-\gamma_1)}
   \cos\frac{\theta}{2}
   \end{pmatrix}
-  $$
-* Define $\boxed{\lambda=\gamma_2-\gamma_1}$.
+$$
+
+* Define $\lambda=\gamma_2-\gamma_1$.
 * $e^{i\gamma_1}$ is an overall **global phase**.
   * Global phase has no physical significance, so it can be ignored.
 * Only the **relative phase** $\lambda=\gamma_2-\gamma_1$ matters physically.
-* So the general unitary can be parametrized using only $\boxed{\theta,\phi,\lambda}$ rather than four independent parameters.
+* So the general unitary can be parametrized using only $\theta,\phi,\lambda$ rather than four independent parameters.
 * Ignoring the global phase,
-  $$
+
+$$
   \boxed{
   U(\theta,\phi,\lambda) =
   \begin{pmatrix}
-  \cos\frac{\theta}{2}
-  &
+  \cos\frac{\theta}{2}&
   -e^{-i(\phi-\lambda)}
   \sin\frac{\theta}{2}
   \\\\[4pt]
-  e^{i\phi}\sin\frac{\theta}{2}
-  &
+  e^{i\phi}\sin\frac{\theta}{2}&
   e^{i\lambda}\cos\frac{\theta}{2}
   \end{pmatrix}
   }
-  $$
+$$
 
 #### Recovering the Hadamard Gate
 
@@ -742,47 +720,45 @@ $$
 
 * It maps $|0\rangle\rightarrow|+\rangle$ and $|1\rangle\rightarrow|-\rangle$.
 * The $+/-$ basis corresponds to the $+x/-x$ direction on the Bloch sphere.
-* Therefore choose $\boxed{\theta=\frac{\pi}{2},\phi=0}$ because the $+x$ direction lies on the equator.
+* Therefore choose $\theta=\frac{\pi}{2},\phi=0$ because the $+x$ direction lies on the equator.
 * For the spin-up state,
-  $$
-    e^{i\gamma_1}|\uparrow_{\vec e}\rangle=
-    e^{i\gamma_1}
-    \frac{1}{\sqrt2}
-    \begin{pmatrix}
-    1\\\\
-    1
-    \end{pmatrix}
-  $$
-* To match
-  $$
-    |+\rangle=
-    \frac1{\sqrt2}
-    \begin{pmatrix}
-    1\\\\
-    1
-    \end{pmatrix}
-  $$
-  choose $\boxed{\gamma_1=0}$.
+
+$$
+  e^{i\gamma_1}|\uparrow_{\vec e}\rangle=
+  e^{i\gamma_1}
+  \frac{1}{\sqrt2}
+  \begin{pmatrix}
+  1\\\\
+  1
+  \end{pmatrix}
+$$
+
+* To match $|+\rangle=\frac1{\sqrt2}\begin{pmatrix}1\\\\1\end{pmatrix}$ choose $\gamma_1=0$.
+
 * For the spin-down state,
-  $$
-    |\downarrow_{\vec e}\rangle=
-    \frac1{\sqrt2}
-    \begin{pmatrix}
-    -1\\\\
-    1
-    \end{pmatrix}
-  $$
+
+$$
+  |\downarrow_{\vec e}\rangle=
+  \frac1{\sqrt2}
+  \begin{pmatrix}
+  -1\\\\
+  1
+  \end{pmatrix}
+$$
+
 * But the desired state is
-  $$
-    |-\rangle=
-    \frac1{\sqrt2}
-    \begin{pmatrix}
-    1\\\\
-    -1
-    \end{pmatrix}
-  $$
+
+$$
+  |-\rangle=
+  \frac1{\sqrt2}
+  \begin{pmatrix}
+  1\\\\
+  -1
+  \end{pmatrix}
+$$
+
 * These differ by a phase of $-1$: $-1=e^{i\pi}$.
-* Therefore, $\boxed{\gamma_2=\pi}$.
+* Therefore, $\gamma_2=\pi$.
 * Hence, $\lambda = \gamma_2-\gamma_1 = \pi$.
 
 $$
