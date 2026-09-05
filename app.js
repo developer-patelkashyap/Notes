@@ -16,6 +16,61 @@ const POSTS_DIR = path.join(__dirname, "posts");
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
+// protect latex from marked
+marked.use({
+  extensions: [
+    {
+      name: "displayMath",
+      level: "block",
+
+      start(src) {
+        return src.indexOf("$$");
+      },
+
+      tokenizer(src) {
+        const match = /^\$\$([\s\S]+?)\$\$(?:\n|$)/.exec(src);
+
+        if (match) {
+          return {
+            type: "displayMath",
+            raw: match[0],
+            text: match[1],
+          };
+        }
+      },
+
+      renderer(token) {
+        return `$$${token.text}$$`;
+      },
+    },
+
+    {
+      name: "inlineMath",
+      level: "inline",
+
+      start(src) {
+        return src.indexOf("$");
+      },
+
+      tokenizer(src) {
+        const match = /^\$([^$\n]+?)\$/.exec(src);
+
+        if (match) {
+          return {
+            type: "inlineMath",
+            raw: match[0],
+            text: match[1],
+          };
+        }
+      },
+
+      renderer(token) {
+        return `$${token.text}$`;
+      },
+    },
+  ],
+});
+
 function readPosts() {
   return fs
     .readdirSync(POSTS_DIR)
