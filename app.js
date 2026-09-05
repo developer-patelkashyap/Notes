@@ -142,7 +142,7 @@ app.get("/", (req, res) => {
   res.render("index", {
     posts,
     categories,
-    pageTitle: "Kashyap's Notes",
+    pageTitle: "Vyasa's Notes",
     pageDescription: "Notes written in Markdown.",
     pageUrl: SITE_URL || "",
   });
@@ -153,7 +153,7 @@ app.get("/posts/:slug", (req, res) => {
 
   if (!post) {
     return res.status(404).render("404", {
-      pageTitle: "Page not found · Kashyap's Notes",
+      pageTitle: "Page not found · Vyasa's Notes",
       pageDescription: "The requested post could not be found.",
       pageUrl: "",
     });
@@ -161,20 +161,20 @@ app.get("/posts/:slug", (req, res) => {
 
   res.render("post", {
     post,
-    pageTitle: `${post.title} · Kashyap's Notes`,
-    pageDescription: post.description || "A note from Kashyap's Notes.",
+    pageTitle: `${post.title} · Vyasa's Notes`,
+    pageDescription: post.description || "A note from Vyasa's Notes.",
     pageUrl: SITE_URL ? `${SITE_URL}/posts/${post.slug}` : "",
   });
 });
 
 app.use((req, res) => {
   res.status(404).render("404", {
-    pageTitle: "Page not found · Kashyap's Notes",
+    pageTitle: "Page not found · Vyasa's Notes",
     pageDescription: "The requested page could not be found.",
     pageUrl: "",
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`Kashyap's Notes: http://localhost:${PORT}`);
+  console.log(`Vyasa's Notes: http://localhost:${PORT}`);
 });
