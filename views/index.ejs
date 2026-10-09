@@ -1,47 +1,47 @@
 <%- include('partials/head') %>
 
-<section class="shell hero">
-  <div class="mantra-block">
-    <p class="mantra">
+<section class="container py-5">
+  <div class="text-center mx-auto mb-5 py-4">
+    <p class="fs-4 fw-semibold lh-lg mb-0">
       ॐ ऐं सरस्वत्यै नमः॥
     </p>
-    <p class="mantra-meaning">
+    <p class="text-body-secondary lh-lg mt-2 mb-0">
       मैं ज्ञान, विद्या और बुद्धि की देवी माँ सरस्वती को नमन करता हूँ।
     </p>
-    <div class="mantra-divider"></div>
+    <hr class="w-25 mx-auto my-4">
   </div>
   <% if (categories.length) { %>
-    <nav class="category-links" aria-label="Categories">
+    <nav class="d-flex flex-wrap justify-content-center gap-2" aria-label="Categories">
       <% categories.forEach((category) => { %>
-        <a href="#<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>"><%= category %></a>
+        <a class="btn btn-outline-secondary btn-sm rounded-pill" href="#<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>"><%= category %></a>
       <% }) %>
     </nav>
   <% } %>
 </section>
 
-<section class="shell content-stack">
+<section class="container pb-5">
   <% if (!posts.length) { %>
-    <div class="empty-state">No posts yet. Add a Markdown file to <code>posts/</code>.</div>
+    <div class="alert alert-secondary">No posts yet. Add a Markdown file to <code>posts/</code>.</div>
   <% } %>
 
   <% categories.forEach((category) => { %>
     <% const categoryPosts = posts.filter((post) => post.category === category); %>
-    <section class="category-section" id="<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>">
-      <div class="section-heading">
-        <h2><%= category %></h2>
-        <span><%= categoryPosts.length %> <%= categoryPosts.length === 1 ? 'post' : 'posts' %></span>
+    <section class="mb-5" id="<%= category.toLowerCase().replace(/[^a-z0-9]+/g, '-') %>">
+      <div class="d-flex align-items-baseline justify-content-between gap-3 mb-3">
+        <h2 class="h4 mb-0"><%= category %></h2>
+        <span class="small text-body-secondary"><%= categoryPosts.length %> <%= categoryPosts.length === 1 ? 'post' : 'posts' %></span>
       </div>
 
-      <div class="post-list">
+      <div class="list-group shadow-sm">
         <% categoryPosts.forEach((post) => { %>
-          <a class="post-card" href="/posts/<%= post.slug %>">
+          <a class="list-group-item list-group-item-action p-4" href="/posts/<%= post.slug %>">
             <div>
-              <h3><%= post.title %></h3>
-              <% if (post.description) { %><p><%= post.description %></p><% } %>
+              <h3 class="h5 mb-1"><%= post.title %></h3>
+              <% if (post.description) { %><p class="text-body-secondary mb-0"><%= post.description %></p><% } %>
             </div>
-            <div class="post-meta">
-              <% if (post.dateText) { %><time><%= post.dateText %></time><% } %>
-              <% post.tags.forEach((tag) => { %><span><%= tag %></span><% }) %>
+            <div class="d-flex flex-wrap align-items-center gap-2 mt-3 small text-body-secondary">
+              <% if (post.dateText) { %><time class="me-1"><%= post.dateText %></time><% } %>
+              <% post.tags.forEach((tag) => { %><span class="badge text-bg-secondary rounded-pill"><%= tag %></span><% }) %>
             </div>
           </a>
         <% }) %>

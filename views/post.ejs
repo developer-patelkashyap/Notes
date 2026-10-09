@@ -1,44 +1,46 @@
 <%- include('partials/head') %>
 
-<article class="shell article-shell">
-  <a class="back-link" href="/">← All notes</a>
+<article class="container py-5">
+  <div class="col-lg-8 mx-auto">
+    <a class="link-secondary text-decoration-none" href="/">← All notes</a>
 
-  <header class="article-header">
-    <p class="eyebrow"><%= post.category %></p>
-    <h1><%= post.title %></h1>
+    <header class="py-4 border-bottom">
+      <p class="text-primary text-uppercase fw-bold small mb-3"><%= post.category %></p>
+      <h1 class="display-4 fw-bold lh-1"><%= post.title %></h1>
 
-    <% if (post.description) { %>
-      <p class="article-description"><%= post.description %></p>
-    <% } %>
-
-    <div class="post-meta article-meta">
-      <% if (post.dateText) { %>
-        <time><%= post.dateText %></time>
+      <% if (post.description) { %>
+        <p class="lead text-body-secondary mt-3 mb-0"><%= post.description %></p>
       <% } %>
 
-      <% post.tags.forEach((tag) => { %>
-        <span><%= tag %></span>
-      <% }) %>
+      <div class="d-flex flex-wrap align-items-center gap-2 mt-4 small text-body-secondary">
+        <% if (post.dateText) { %>
+          <time class="me-1"><%= post.dateText %></time>
+        <% } %>
+
+        <% post.tags.forEach((tag) => { %>
+          <span class="badge text-bg-secondary rounded-pill"><%= tag %></span>
+        <% }) %>
+      </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <aside class="border rounded bg-body-tertiary p-4 my-5" id="table-of-contents">
+      <h2 class="h5">Table of Contents</h2>
+      <nav>
+        <ul class="list-unstyled mb-0" id="toc-list"></ul>
+      </nav>
+    </aside>
+
+    <div class="pt-2 text-break" id="post-content">
+      <%- post.html %>
     </div>
-  </header>
-
-  <!-- Table of Contents -->
-  <aside class="table-of-contents" id="table-of-contents">
-    <h2>Table of Contents</h2>
-    <nav>
-      <ul id="toc-list"></ul>
-    </nav>
-  </aside>
-
-  <div class="post-content" id="post-content">
-    <%- post.html %>
   </div>
 </article>
 
 <!-- Back to Top Button -->
 <button
   id="back-to-top"
-  class="back-to-top"
+  class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow d-none"
   type="button"
   aria-label="Back to top"
 >
